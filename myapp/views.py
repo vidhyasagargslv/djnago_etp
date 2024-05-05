@@ -138,3 +138,4 @@ def delete_session(request):
 def update_session(request):
     request.session['username'] = ' sagar'
     return HttpResponse("Session is updated!")
+
