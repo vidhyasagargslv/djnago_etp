@@ -121,7 +121,6 @@ def update_cookie(request):
 def set_session(request):
     request.session['username'] = 'sagar'
     return HttpResponse("Session is set!")
-
 # get session
 def get_session(request):
     username = request.session.get('username')
