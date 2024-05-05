@@ -91,7 +91,7 @@ def signup(request):
 
 def set_cookie(request):
    response = HttpResponse("Cookie set!")
-   response.set_cookie('username', 'john_doe', max_age=3600) # Set cookie with a username and max_age of 1 hour
+   response.set_cookie('username', 'vidhya sagar', max_age=3600) # Set cookie with a username and max_age of 1 hour
 
    return response
 
@@ -102,6 +102,40 @@ def get_cookie(request):
       return HttpResponse(f"Hello, {username}! Welcome back.")
    else:
       return HttpResponse("No cookie found!")
+  
+# delete cookies
+def delete_cookie(request):
+    response = HttpResponse("Cookie deleted!")
+    response.delete_cookie('username')
+    return response
+
+#update cookies
+def update_cookie(request):
+    response = HttpResponse("Cookie updated!")
+    response.set_cookie('username', 'vidhya sagar', max_age=3600) # Update cookie with a username and max_age of 1 hour
+    return response
    
    
 
+# set session
+def set_session(request):
+    request.session['username'] = 'sagar'
+    return HttpResponse("Session is set!")
+
+# get session
+def get_session(request):
+    username = request.session.get('username')
+    if username:
+        return HttpResponse(f"Hello, {username}! Welcome back.")
+    else:
+        return HttpResponse("No session found!")
+    
+# delete session
+def delete_session(request):
+    del request.session['username']
+    return HttpResponse("Session deleted!")
+
+# update session
+def update_session(request):
+    request.session['username'] = ' sagar'
+    return HttpResponse("Session is updated!")
